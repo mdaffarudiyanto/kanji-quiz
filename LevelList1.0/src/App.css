@@ -1,0 +1,16 @@
+/*LevelList Style*/
+
+body {
+  background: linear-gradient(135deg, #f48fb1, #80cbc4); 
+  padding: 2rem;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 95vh;
+}
+
+.LevelListContainer {
+  width: 100vw; 
+  max-width: 100%; 
+}
