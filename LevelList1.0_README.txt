@@ -1,2 +1,0 @@
-Change App.js and add the corrresponding files in src to test
-Copy paste the div classname='LevelListContainer' for easy access
