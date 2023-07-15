@@ -1,31 +1,16 @@
-import "./App.css";
+import React, { useState } from "react";
 import Menu from "./components/Menu";
 import Quiz from "./components/Quiz";
-import EndScreen from "./components/EndScreen";
-import { useState } from "react";
 import { GameStateContext } from "./helpers/Contexts";
-// ['menu', 'playing', 'finished']
+
 function App() {
-  const [gameState, setGameState] = useState("menu");
-  const [userName, setUserName] = useState("");
-  const [score, setScore] = useState(0);
+  const [gameState, setGameState] = useState({ state: "menu", level: 5 });
 
   return (
     <div className="App">
       <h1>Kanji Quiz</h1>
-      <GameStateContext.Provider
-        value={{
-          gameState,
-          setGameState,
-          userName,
-          setUserName,
-          score,
-          setScore,
-        }}
-      >
-        {gameState === "menu" && <Menu />}
-        {gameState === "playing" && <Quiz />}
-        {gameState === "finished" && <EndScreen />}
+      <GameStateContext.Provider value={{ gameState, setGameState }}>
+        {gameState.state === "menu" ? <Menu /> : <Quiz />}
       </GameStateContext.Provider>
     </div>
   );

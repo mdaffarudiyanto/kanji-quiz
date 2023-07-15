@@ -1,8 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import EndScreen from "./EndScreen";
+import { GameStateContext } from "../helpers/Contexts";
 
 const Quiz = () => {
+  const { gameState } = useContext(GameStateContext);
+  const { level } = gameState;
+  // const { level } = useContext(GameStateContext); // Accessing level from the game state
   const [quizData, setQuizData] = useState(null);
+
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [score, setScore] = useState(0);
   const [finished, setFinished] = useState(false);
@@ -11,12 +16,13 @@ const Quiz = () => {
   const [scoreMessage, setScoreMessage] = useState("");
 
   useEffect(() => {
+    // Fetch quiz data based on the selected level
     const fetchQuizData = async () => {
       try {
         const response = await fetch("http://localhost:9999/posts/");
         const data = await response.json();
         const filteredData = Object.keys(data).reduce((filtered, key) => {
-          if (data[key].jlpt_new === 5) {
+          if (data[key].jlpt_new === level) {
             filtered[key] = data[key];
           }
           return filtered;
@@ -28,7 +34,7 @@ const Quiz = () => {
     };
 
     fetchQuizData();
-  }, []);
+  }, [level]);
 
   useEffect(() => {
     if (quizData) {
