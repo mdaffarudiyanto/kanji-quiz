@@ -6,7 +6,6 @@ import ScoreBelow from "../img/peace-out.gif"
 import Score4To7Image from "../img/rizz.gif";
 import Score8To10Image from "../img/nerd-nerdy.gif";
 
-
 const Quiz = () => {
   const { gameState } = useContext(GameStateContext);
   const { level } = gameState;
@@ -94,7 +93,7 @@ const Quiz = () => {
             alt="Your score is low"
             className="quiz-image"
           />
-          
+
         </>
       );
     } else if (score >= 4 && score <= 7) {
@@ -118,6 +117,8 @@ const Quiz = () => {
     }
     return "";
   };
+  
+  
 
   if (!quizData || !currentQuestion) {
     return <div>Loading...</div>;
