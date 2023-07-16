@@ -42,19 +42,8 @@ button:hover {
   align-items: center;
 }
 
-.Menu, .Quiz, .EndScreen h1 {
+.Menu, .Quiz h1 {
   color: white;
-}
-
-.EndScreen {
-  width: 500px;
-  height: 500px;
-  border-radius: 10px;
-  background-color: lightseagreen;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 #nextQuestion {
@@ -65,3 +54,6 @@ h3 {
   color: #ffffff;
 
 }
+
+
+
