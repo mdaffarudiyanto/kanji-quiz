@@ -1,8 +1,8 @@
-import "../Quiz.css"
+import "../Quiz.css";
 import React, { useState, useEffect, useContext } from "react";
 import EndScreen from "./EndScreen";
 import { GameStateContext } from "../helpers/Contexts";
-import ScoreBelow from "../img/peace-out.gif"
+import ScoreBelow from "../img/peace-out.gif";
 import Score4To7Image from "../img/rizz.gif";
 import Score8To10Image from "../img/nerd-nerdy.gif";
 
@@ -75,8 +75,13 @@ const Quiz = () => {
         } else {
           setCurrentQuestion(questionKeys[nextQuestionIndex]);
 
-          const correctAnswer = quizData[questionKeys[nextQuestionIndex]].meanings[0];
-          const wrongAnswers = getRandomWrongAnswers(quizData, correctAnswer, 3);
+          const correctAnswer =
+            quizData[questionKeys[nextQuestionIndex]].meanings[0];
+          const wrongAnswers = getRandomWrongAnswers(
+            quizData,
+            correctAnswer,
+            3
+          );
           const shuffledArray = shuffleArray([correctAnswer, ...wrongAnswers]);
           setShuffledAnswers(shuffledArray);
         }
@@ -93,7 +98,6 @@ const Quiz = () => {
             alt="Your score is low"
             className="quiz-image"
           />
-
         </>
       );
     } else if (score >= 4 && score <= 7) {
@@ -117,8 +121,6 @@ const Quiz = () => {
     }
     return "";
   };
-  
-  
 
   if (!quizData || !currentQuestion) {
     return <div>Loading...</div>;
@@ -139,9 +141,6 @@ const Quiz = () => {
 
   return (
     <div className="Quiz">
-      <div className="question-section">
-        <p className="kanji-text">Kanji: {currentQuestion}</p>
-      </div>
       <div className="answer-section">
         {shuffledAnswers.map((answer, index) => (
           <button
@@ -152,6 +151,9 @@ const Quiz = () => {
             {answer}
           </button>
         ))}
+        <div className="kanji-overlay">
+          <p className="kanji-text">{currentQuestion}</p>
+        </div>
       </div>
       {selectedAnswer && (
         <div className="feedback-section">
