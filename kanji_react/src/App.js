@@ -5,11 +5,22 @@ import { GameStateContext } from "./helpers/Contexts";
 
 function App() {
   const [gameState, setGameState] = useState({ state: "menu", level: 5 });
+  const [score, setScore] = useState(0);
+  const [finished, setFinished] = useState(false);
 
   return (
     <div className="App">
       <h1>Kanji Quiz</h1>
-      <GameStateContext.Provider value={{ gameState, setGameState }}>
+      <GameStateContext.Provider
+        value={{
+          gameState,
+          setGameState,
+          score,
+          setScore,
+          finished,
+          setFinished,
+        }}
+      >
         {gameState.state === "menu" ? <Menu /> : <Quiz />}
       </GameStateContext.Provider>
     </div>
