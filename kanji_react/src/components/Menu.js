@@ -2,14 +2,8 @@ import "../Menu.css";
 import { useContext } from "react";
 import { GameStateContext } from "../helpers/Contexts";
 
-
 function Menu() {
   const { setGameState } = useContext(GameStateContext);
-  // const [selectedLevel, setSelectedLevel] = useState(5); // Default JLPT level is N5
-
-  // const handleLevelChange = (event) => {
-  //   setSelectedLevel(Number(event.target.value));
-  // };
 
   const startQuiz = (level) => {
     setGameState({ state: "playing", level });
@@ -17,6 +11,7 @@ function Menu() {
 
   return (
     <div className="Menu">
+      <h2 className="Menu-intro">Choose Your Level:</h2>
       <div>
         <button onClick={() => startQuiz(5)}>N5</button>
         <button onClick={() => startQuiz(4)}>N4</button>
