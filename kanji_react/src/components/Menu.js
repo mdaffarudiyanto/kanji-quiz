@@ -1,30 +1,29 @@
-import "../App.css";
-import { useContext, useState } from "react";
+import "../Menu.css";
+import { useContext } from "react";
 import { GameStateContext } from "../helpers/Contexts";
 
 
 function Menu() {
   const { setGameState } = useContext(GameStateContext);
-  const [selectedLevel, setSelectedLevel] = useState(5); // Default JLPT level is N5
+  // const [selectedLevel, setSelectedLevel] = useState(5); // Default JLPT level is N5
 
-  const handleLevelChange = (event) => {
-    setSelectedLevel(Number(event.target.value));
-  };
+  // const handleLevelChange = (event) => {
+  //   setSelectedLevel(Number(event.target.value));
+  // };
 
-  const startQuiz = () => {
-    setGameState({ state: "playing", level: selectedLevel });
+  const startQuiz = (level) => {
+    setGameState({ state: "playing", level });
   };
 
   return (
     <div className="Menu">
-      <select value={selectedLevel} onChange={handleLevelChange}>
-        <option value={5}>N5</option>
-        <option value={4}>N4</option>
-        <option value={3}>N3</option>
-        <option value={2}>N2</option>
-        <option value={1}>N1</option>
-      </select>
-      <button onClick={startQuiz}>Start Quiz</button>
+      <div>
+        <button onClick={() => startQuiz(5)}>N5</button>
+        <button onClick={() => startQuiz(4)}>N4</button>
+        <button onClick={() => startQuiz(3)}>N3</button>
+        <button onClick={() => startQuiz(2)}>N2</button>
+        <button onClick={() => startQuiz(1)}>N1</button>
+      </div>
     </div>
   );
 }

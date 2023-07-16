@@ -1,7 +1,7 @@
+import "../Quiz.css"
 import React, { useState, useEffect, useContext } from "react";
 import EndScreen from "./EndScreen";
 import { GameStateContext } from "../helpers/Contexts";
-import "../index.css";
 
 const Quiz = () => {
   const { gameState } = useContext(GameStateContext);
@@ -17,7 +17,6 @@ const Quiz = () => {
   const [shuffledAnswers, setShuffledAnswers] = useState([]);
 
   useEffect(() => {
-    // Fetch quiz data based on the selected level
     const fetchQuizData = async () => {
       try {
         const response = await fetch("http://localhost:9999/posts/");
@@ -123,41 +122,40 @@ const Quiz = () => {
   const correctAnswer = quizData[currentQuestion].meanings[0];
 
   return (
-    <div>
-      <>
-        <p>Kanji: {currentQuestion}</p>
-        <div>
-          {shuffledAnswers.map((answer, index) => (
-            <button
-              key={index}
-              onClick={() => handleAnswerClick(answer)}
-              disabled={selectedAnswer !== null}
-            >
-              {answer}
-            </button>
-          ))}
-        </div>
-        {selectedAnswer && (
+    <div className="Quiz">
+      <div className="question-section">
+      <p className="kanji-text">Kanji: {currentQuestion}</p>
+      </div>
+      <div className="answer-section">
+        {shuffledAnswers.map((answer, index) => (
+          <button
+            key={index}
+            onClick={() => handleAnswerClick(answer)}
+            disabled={selectedAnswer !== null}
+          >
+            {answer}
+          </button>
+        ))}
+      </div>
+      {selectedAnswer && (
+        <div className="feedback-section">
           <p>
             Your answer: {selectedAnswer}{" "}
             {selectedAnswer === correctAnswer ? "✅" : "❌"}
-            {selectedAnswer !== correctAnswer && (
-              <>
-                <br />
-                Correct Answer: {correctAnswer}
-              </>
-            )}
           </p>
-        )}
-
+          {selectedAnswer !== correctAnswer && (
+            <p>Correct Answer: {correctAnswer}</p>
+          )}
+        </div>
+      )}
+      <div className="score-section">
         <p>Score: {score}</p>
-        <p>Question Left: {questionCount}</p>
-      </>
+        <p>Questions Left: {questionCount}</p>
+      </div>
     </div>
   );
 };
 
-// Helper function to shuffle an array
 const shuffleArray = (array) => {
   const shuffledArray = array.slice();
   for (let i = shuffledArray.length - 1; i > 0; i--) {
@@ -167,7 +165,6 @@ const shuffleArray = (array) => {
   return shuffledArray;
 };
 
-// Helper function to get random wrong answers from the database for answer options
 const getRandomWrongAnswers = (quizData, correctAnswer, count) => {
   const allQuestions = Object.keys(quizData);
   const wrongAnswers = [];
@@ -189,4 +186,3 @@ const getRandomWrongAnswers = (quizData, correctAnswer, count) => {
 };
 
 export default Quiz;
-
