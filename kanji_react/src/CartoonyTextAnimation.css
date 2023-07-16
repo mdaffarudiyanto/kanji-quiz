@@ -1,0 +1,42 @@
+body {
+    background-color: #2e4057;
+    margin: 0;
+  }
+  
+  .App {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+  
+  svg text {
+    font-family: Lora;
+    letter-spacing: 10px;
+    stroke: #000000;
+    font-size: 45px; 
+    font-weight: 700;
+    stroke-width: 3;
+    animation: textAnimate 5s infinite alternate;
+    text-anchor: middle;
+    dominant-baseline: middle
+  }
+  
+  @keyframes textAnimate {
+    0% {
+      stroke-dasharray: 0 50%;
+      stroke-dashoffset: 20%;
+      fill: hsl(0, 0%, 0%);
+    }
+  
+    100% {
+      stroke-dasharray: 50% 0;
+      stroke-dashoffset: -20%;
+      fill: hsla(189, 68%, 75%, 0%);
+    }
+  }
+  
