@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
 import EndScreen from "./EndScreen";
 import { GameStateContext } from "../helpers/Contexts";
+import "../index.css";
 
 const Quiz = () => {
   const { gameState } = useContext(GameStateContext);
   const { level } = gameState;
-  // const { level } = useContext(GameStateContext); // Accessing level from the game state
   const [quizData, setQuizData] = useState(null);
 
   const [selectedAnswer, setSelectedAnswer] = useState(null);
@@ -14,6 +14,7 @@ const Quiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const [questionCount, setQuestionCount] = useState(9);
   const [scoreMessage, setScoreMessage] = useState("");
+  const [shuffledAnswers, setShuffledAnswers] = useState([]);
 
   useEffect(() => {
     // Fetch quiz data based on the selected level
@@ -42,6 +43,11 @@ const Quiz = () => {
       const randomQuestion =
         questionKeys[Math.floor(Math.random() * questionKeys.length)];
       setCurrentQuestion(randomQuestion);
+
+      const correctAnswer = quizData[randomQuestion].meanings[0];
+      const wrongAnswers = getRandomWrongAnswers(quizData, correctAnswer, 3);
+      const shuffledArray = shuffleArray([correctAnswer, ...wrongAnswers]);
+      setShuffledAnswers(shuffledArray);
     }
   }, [quizData]);
 
@@ -66,6 +72,11 @@ const Quiz = () => {
           setScoreMessage(getScoreMessage());
         } else {
           setCurrentQuestion(questionKeys[nextQuestionIndex]);
+
+          const correctAnswer = quizData[questionKeys[nextQuestionIndex]].meanings[0];
+          const wrongAnswers = getRandomWrongAnswers(quizData, correctAnswer, 3);
+          const shuffledArray = shuffleArray([correctAnswer, ...wrongAnswers]);
+          setShuffledAnswers(shuffledArray);
         }
       }, 1500);
     }
@@ -110,8 +121,6 @@ const Quiz = () => {
   }
 
   const correctAnswer = quizData[currentQuestion].meanings[0];
-  const wrongAnswers = getRandomWrongAnswers(quizData, correctAnswer, 3);
-  const shuffledAnswers = shuffleArray([correctAnswer, ...wrongAnswers]);
 
   return (
     <div>
@@ -180,3 +189,4 @@ const getRandomWrongAnswers = (quizData, correctAnswer, count) => {
 };
 
 export default Quiz;
+
