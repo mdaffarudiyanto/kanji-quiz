@@ -93,6 +93,7 @@ const Quiz = () => {
             alt="Your score is low"
             className="quiz-image"
           />
+
         </>
       );
     } else if (score >= 4 && score <= 7) {
@@ -101,7 +102,7 @@ const Quiz = () => {
         <img
           src={Score4To7Image}
           alt="Your score is between 4 and 7"
-          className="quiz-image" 
+          className="quiz-image"
         />
       );
     } else if (score >= 8 && score <= 10) {
@@ -139,7 +140,7 @@ const Quiz = () => {
   return (
     <div className="Quiz">
       <div className="question-section">
-      <p className="kanji-text">Kanji: {currentQuestion}</p>
+        <p className="kanji-text">Kanji: {currentQuestion}</p>
       </div>
       <div className="answer-section">
         {shuffledAnswers.map((answer, index) => (

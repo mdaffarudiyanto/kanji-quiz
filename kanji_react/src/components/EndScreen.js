@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import "../App.css";
 import "../EndScreen.css";
 import { GameStateContext } from "../helpers/Contexts";
 
