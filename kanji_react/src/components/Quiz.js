@@ -2,6 +2,9 @@ import "../Quiz.css"
 import React, { useState, useEffect, useContext } from "react";
 import EndScreen from "./EndScreen";
 import { GameStateContext } from "../helpers/Contexts";
+import ScoreBelow from "../img/peace-out.gif"
+import Score4To7Image from "../img/rizz.gif";
+import Score8To10Image from "../img/nerd-nerdy.gif";
 
 const Quiz = () => {
   const { gameState } = useContext(GameStateContext);
@@ -81,28 +84,40 @@ const Quiz = () => {
     }
   };
 
-  const handleLinkClick = () => {
-    window.open(
-      "https://www.amazon.co.jp/s?k=minano+nihongo+n5&crid=2E9RLUMS9MEH1&sprefix=mina+no+nihingo+%2Caps%2C186&ref=nb_sb_ss_sc_2_15",
-      "_blank"
-    );
-  };
-
   const getScoreMessage = () => {
     if (score >= 0 && score <= 3) {
       return (
         <>
-          <p>😭💀</p>
-          <button onClick={handleLinkClick}>Get study mats fr..</button>
+          <img
+            src={ScoreBelow}
+            alt="Your score is low"
+            className="quiz-image"
+          />
         </>
       );
     } else if (score >= 4 && score <= 7) {
-      return "😗😎";
+      // Show the image for score 4-7
+      return (
+        <img
+          src={Score4To7Image}
+          alt="Your score is between 4 and 7"
+          className="quiz-image" 
+        />
+      );
     } else if (score >= 8 && score <= 10) {
-      return "🤓🤩";
+      // Show the image for score 8-10
+      return (
+        <img
+          src={Score8To10Image}
+          alt="Your score is between 8 and 10"
+          className="quiz-image"
+        />
+      );
     }
     return "";
   };
+  
+  
 
   if (!quizData || !currentQuestion) {
     return <div>Loading...</div>;
