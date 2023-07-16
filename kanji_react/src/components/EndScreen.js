@@ -13,7 +13,7 @@ const EndScreen = ({ score, setFinished, scoreMessage }) => {
 
   const handleLinkClick = () => {
     window.open(
-      "https://www.amazon.co.jp/s?k=minano+nihongo+n5&crid=2E9RLUMS9MEH1&sprefix=mina+no+nihingo+%2Caps%2C186&ref=nb_sb_ss_sc_2_15",
+      "https://www.amazon.co.jp/s?k=minna+no+nihongo&crid=2AQ39TH4SQ7L4&sprefix=minna+no+nihongo%2Caps%2C165&ref=nb_sb_noss_1",
       "_blank"
     );
   };
