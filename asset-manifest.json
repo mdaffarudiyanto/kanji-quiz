@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/kanji-quiz/static/css/main.29aaddda.css",
+    "main.js": "/kanji-quiz/static/js/main.211d032f.js",
+    "static/js/787.e6d02e21.chunk.js": "/kanji-quiz/static/js/787.e6d02e21.chunk.js",
+    "static/media/nerd-nerdy.gif": "/kanji-quiz/static/media/nerd-nerdy.6437d6efad8eb3fcebd6.gif",
+    "static/media/rizz.gif": "/kanji-quiz/static/media/rizz.79e999e0c2561d5029a9.gif",
+    "static/media/peace-out.gif": "/kanji-quiz/static/media/peace-out.7ca2b9d24077300328cb.gif",
+    "index.html": "/kanji-quiz/index.html",
+    "main.29aaddda.css.map": "/kanji-quiz/static/css/main.29aaddda.css.map",
+    "main.211d032f.js.map": "/kanji-quiz/static/js/main.211d032f.js.map",
+    "787.e6d02e21.chunk.js.map": "/kanji-quiz/static/js/787.e6d02e21.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.29aaddda.css",
+    "static/js/main.211d032f.js"
+  ]
+}
