@@ -1,5 +1,7 @@
 import "../Quiz.css";
 import React, { useState, useEffect, useContext } from "react";
+import { getDatabase, ref, onValue } from "firebase/database";
+import { app } from "./firebase"; // Make sure to replace './firebase-config' with the actual path to your Firebase configuration file
 import EndScreen from "./EndScreen";
 import { GameStateContext } from "../helpers/Contexts";
 import ScoreBelow from "../img/peace-out.gif";
@@ -19,21 +21,47 @@ const Quiz = () => {
   const [scoreMessage, setScoreMessage] = useState("");
   const [shuffledAnswers, setShuffledAnswers] = useState([]);
 
+  // useEffect(() => {
+  //   const fetchQuizData = async () => {
+  //     try {
+  //       const response = await fetch("http://localhost:9999/posts/");
+  //       const data = await response.json();
+  //       const filteredData = Object.keys(data).reduce((filtered, key) => {
+  //         if (data[key].jlpt_new === level) {
+  //           filtered[key] = data[key];
+  //         }
+  //         return filtered;
+  //       }, {});
+  //       setQuizData(filteredData);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+
+  //   fetchQuizData();
+  // }, [level]);
+
   useEffect(() => {
     const fetchQuizData = async () => {
-      try {
-        const response = await fetch("http://localhost:9999/posts/");
-        const data = await response.json();
-        const filteredData = Object.keys(data).reduce((filtered, key) => {
-          if (data[key].jlpt_new === level) {
-            filtered[key] = data[key];
-          }
-          return filtered;
-        }, {});
-        setQuizData(filteredData);
-      } catch (error) {
-        console.log(error);
-      }
+      const db = getDatabase(app);
+      const quizRef = ref(db, "posts");
+
+      onValue(
+        quizRef,
+        (snapshot) => {
+          const data = snapshot.val();
+          const filteredData = Object.keys(data).reduce((filtered, key) => {
+            if (data[key].jlpt_new === level) {
+              filtered[key] = data[key];
+            }
+            return filtered;
+          }, {});
+          setQuizData(filteredData);
+        },
+        {
+          onlyOnce: true,
+        }
+      );
     };
 
     fetchQuizData();
