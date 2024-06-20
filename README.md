@@ -13,7 +13,7 @@ To get this project running on your local machine, follow these steps:
 
 ```bash
 git clone https://github.com/mdaffarudiyanto/kanji-quiz.git
-cd jlpt-kanji-quiz-app
+cd kanji-react
 npm install
 npm start
 ```
