@@ -16,7 +16,6 @@ git clone https://github.com/yourusername/jlpt-kanji-quiz-app.git
 cd jlpt-kanji-quiz-app
 npm install
 npm start
-Link: [mdaffarudiyanto.github.io](https://mdaffarudiyanto.github.io/kanji-quiz)
 ```
 
 ## Usage
