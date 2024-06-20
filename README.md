@@ -12,7 +12,7 @@ This project utilizes the following technologies:
 To get this project running on your local machine, follow these steps:
 
 ```bash
-git clone https://github.com/yourusername/jlpt-kanji-quiz-app.git
+git clone https://github.com/mdaffarudiyanto/kanji-quiz.git
 cd jlpt-kanji-quiz-app
 npm install
 npm start
